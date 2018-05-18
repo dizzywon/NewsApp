@@ -1,0 +1,160 @@
+html {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit; }
+html,
+body {
+  height: 100vh; }
+
+html,
+body,
+div,
+span,
+a,
+h1,
+h2,
+h3, 
+h4,
+h5,
+h6,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+  font-family: 'Nunito', sans-serif;
+  text-rendering: optimizeLegibility; 
+}
+ul{
+    list-style: none;
+}
+li{
+    display: inline;
+}
+
+a{
+    text-decoration: none;
+}
+body{
+    background: #fff;
+}
+header{
+    background-color: saddlebrown;
+    color: #fff;
+    width: 100%;
+}
+.navbar{
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+.nav-list {
+    display: flex;
+    justify-content: space-between;
+}
+.nav-items a{
+    color: #fff;
+    font-weight: 500;
+    padding: 20px;
+    margin-left: 40px;
+}
+
+
+
+.banner{
+    background-image: url('../../assets/img/business.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: local;
+    height:400px;
+    width: 100%;
+}
+.banner .overlay{
+		background: rgba(0, 0, 0, 0.25);
+		color: #fff;
+		display: flex;
+		height: 100%;
+		width: 100%;
+}
+.banner .overlay .text{
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 6%;
+    text-align: right;
+    letter-spacing: 2px;
+}
+.text h3{
+    font-size: 30px;
+    text-transform: uppercase;
+}
+
+.container{
+	width: 98%;
+	margin: 0 auto;
+    padding: 30px 0;
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.card{
+ 	height: 450px;
+ 	overflow: hidden;
+     float: left;
+     width: 31%;
+     margin: auto;
+    margin-left: 2%;
+    margin-bottom: 3%;
+}
+
+.card img{
+	height: 50%;
+	width: 100%;
+}
+
+.card__details{
+    margin-top: 30px;
+	padding-left: 10px;
+}
+
+.card__icons ul{
+	list-style-type: none;
+	padding-left: 0;
+	margin: 0
+}
+.card__icons li{
+	display: inline-block;
+}
+.container__source{
+    margin-top: 20px;
+    margin-left: 30px;
+    font-size: 13px;
+    padding: 10px 8px 10px 14px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+}
+@media only screen and (min-width: 480px) and (max-width: 767px){
+    header{
+        width: 100%;
+    }
+    .navbar{
+        width: 100%;
+        display: block;
+    }
+    
+    .card{
+        width: 44%;
+    }
+}       
+@media only screen and (max-width: 479px){
+    .card{
+        width: 98%;
+        margin: 1%;
+        float: none;
+    }
+}

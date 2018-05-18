@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>NEWS WORLD</title>
+		<meta charset="utf-8">
+		<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+		<style type="text/css">
+			body{
+				background: #EEE;
+				margin: 0;
+				padding: 0;
+				font-family: 'Nunito', sans-serif;
+			}
+			.container{
+				max-width: 550px;
+				margin: 0 auto;
+				padding: 15px;
+			}
+
+			.card{
+				background: #FFF;
+				min-height: 120px;
+				display: flex;
+				padding: 15px;
+				justify-content: center;
+				align-items: center;
+				margin-bottom: 15px;
+				border-radius: 5px;
+ 				box-shadow: 0px 3px 15px 0px rgba(0, 0, 0, 0.1);
+			}
+
+			.card__img img{
+				height: 80px;
+				width: 100px;
+			}
+
+			.card__img{
+				width: 80px;
+			}
+			.card__details{
+				flex: 1;
+				padding-left: 10px;
+			}
+			.card__headline, .card__description{
+				margin-left: 20px;
+			}
+
+			.card__icons ul{
+				list-style-type: none;
+				padding-left: 0;
+				margin: 0
+			}
+			.card__icons li{
+				display: inline-block;
+			}
+			.container__source{
+				height: 40px;
+				background: #FFF;
+				width: 150px;
+			}
+		</style>
+		
+	</head>
+	<body>
+
+		<div class="container">
+			<select id="source" class="container__source">
+				
+			</select>
+		</div>
+		<div class="container">
+
+		</div>
+		
+		<script>
+			var container = document.getElementsByClassName('container')[1];
+			
+			var source = document.getElementById('source');
+			
+			//source.innerHTML = '<option>a</option>'+ '<option>b</option>';
+
+			
+
+
+			var endpoint = 'https://newsapi.org/v1/sources?language=en';
+			fetch(endpoint).then(function(blob){
+				return blob.json();
+			}).then(function(data){
+				var output = '';
+				data.sources.forEach(function(source){
+					output += '<option>'+ source.id + '</option>';
+				});
+				source.innerHTML = output;
+			});
+
+			function changeHandler(e){
+				var _id = e.target.selectedOptions[0].text;
+				newsFetcher(_id);
+			}
+
+			source.addEventListener('change', changeHandler);
+
+			function newsFetcher(arg){
+				fetch('https://newsapi.org/v1/articles?source=' + arg + '&apiKey=6728cb03140d4fc3966b9e0a8c8691dc').then(function(blob){
+					return blob.json();
+				}).then(function(data){
+					var output = '';
+					data.articles.forEach(function(article){
+						console.log(article);
+						output += '<div class="card">'+
+										'<div class="card__img">'+
+											'<img src="' + article.urlToImage +'">'+
+										'</div>'+
+										'<div class="card__details">'+
+											'<h3 class="card__headline">'+
+											article.title +
+											'</h3>'+
+											'<p class="card__description">'+
+											article.description+
+											'</p>'+
+										'</div>'+
+									'</div>';
+					});
+					container.innerHTML = output;
+				})
+			}
+
+			
+
+		//DOM 
+			
+		</script>
+	</body>
+</html>
